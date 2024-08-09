@@ -1,0 +1,16 @@
+{
+    "name": "FeatureDailyReward.Scripts",
+    "rootNamespace": "DailyReward",
+    "references": [
+        "Zenject"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

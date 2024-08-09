@@ -1,0 +1,9 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDd1W5wDmd95JqZpdQR8IQEl2h-SLYgzgg",
+  authDomain: "matchandblastfbinstant-ed34f.firebaseapp.com",
+  projectId: "matchandblastfbinstant-ed34f",
+  storageBucket: "matchandblastfbinstant-ed34f.appspot.com",
+  messagingSenderId: "949462256438",
+  appId: "1:949462256438:web:5fe78dd5423fa093d78197",
+  measurementId: "G-N5ZB1V7M1W"
+};

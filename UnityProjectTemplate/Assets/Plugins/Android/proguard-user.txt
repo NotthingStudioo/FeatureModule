@@ -1,0 +1,2 @@
+-keep class com.bytebrew.** {*; }
+-keep class com.google.unity.ads.**{ *; }

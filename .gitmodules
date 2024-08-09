@@ -1,0 +1,11 @@
+[submodule "UnityProjectTemplate/Packages/com.gdk.core"]
+	path = UnityProjectTemplate/Packages/com.gdk.core
+	url = git@github.com:GameDevelopmentKit/GameFoundation.git
+	branch = haihoang/native
+[submodule "UnityProjectTemplate/Assets/FeatureTemplate"]
+	path = UnityProjectTemplate/Assets/FeatureTemplate
+	url = git@github.com:NotthingStudioo/FeatureTemplate.git
+[submodule "UnityProjectTemplate/Packages/com.3rd.core"]
+	path = UnityProjectTemplate/Packages/com.3rd.core
+	url = git@github.com:GameDevelopmentKit/ThirdPartyServices.git
+	branch = haihoang/native

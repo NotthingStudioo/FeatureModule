@@ -1,0 +1,4 @@
+def PreBuild = {
+echo("Do someThing beforeBuild")
+}
+ios(this,PreBuild)

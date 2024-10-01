@@ -1,5 +1,6 @@
 namespace Game.Scripts.Installer.Scene.Main
 {
+    using DailyReward.GameModule.DailyReward.Scripts;
     using Game.Scripts.Services;
     using Game.Scripts.StateMachine;
 
@@ -9,6 +10,7 @@ namespace Game.Scripts.Installer.Scene.Main
         {
             base.InstallBindings();
             this.Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
+            DailyRewardInstaller.Install(this.Container);
             GameStateMachineInstaller.Install(this.Container);
         }
     }

@@ -1,8 +1,16 @@
 {
-    "name": "FeatureDailyReward.Scripts",
+    "name": "FeatureDailyReward",
     "rootNamespace": "DailyReward",
     "references": [
-        "Zenject"
+        "Zenject",
+        "Features.Scripts",
+        "Zenject-Signals",
+        "GameFoundation.BlueprintFlow",
+        "GameFoundation.UIModule",
+        "GameFoundation.Models",
+        "UniTask",
+        "Unity.TextMeshPro",
+        "GameFoundation.AssetLibrary"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

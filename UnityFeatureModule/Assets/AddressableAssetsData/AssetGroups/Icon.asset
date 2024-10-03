@@ -10,20 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: UI
+  m_Name: Icon
   m_EditorClassIdentifier: 
-  m_GroupName: UI
+  m_GroupName: Icon
   m_Data:
     m_SerializedData: []
-  m_GUID: 7aa5ba925c3679a45ab15e686e074b46
+  m_GUID: 5976148efb758b543b928e0a0ed17726
   m_SerializeEntries:
-  - m_GUID: 233161059c6e4b8488525d0686889d12
-    m_Address: BaseDailyRewardView
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9d87918917ad14345a2933e601c6a802
-    m_Address: MainScreenView
+  - m_GUID: 04a2c27a5551124479b5a848134b106b
+    m_Address: 32x32 1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -31,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: dc31dcd78eabb9d469d4d3668498ef06, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: d2a8e9e1417b0d546936dd4162eeb5b3, type: 2}
-    - {fileID: 11400000, guid: e5fb21b41224daf42a730125bb6e7092, type: 2}
+    - {fileID: 11400000, guid: d7cfad059b847eb48b752945eec6d0b4, type: 2}
+    - {fileID: 11400000, guid: 4dd3f808db67d894ca75158f2793ace1, type: 2}

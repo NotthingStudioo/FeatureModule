@@ -8,7 +8,7 @@ namespace DailyReward.GameModule.DailyReward.Scripts
         public override void InstallBindings()
         {
             this.SignalDeclaration();
-            this.Container.Bind<DailyRewardService>().AsCached().NonLazy();
+            this.Container.BindInterfacesAndSelfTo<DailyRewardService>().AsCached().NonLazy();
         }
 
         private void SignalDeclaration()

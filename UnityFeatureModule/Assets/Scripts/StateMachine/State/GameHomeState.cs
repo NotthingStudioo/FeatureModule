@@ -11,9 +11,9 @@
         public GameHomeState(ScreenManager screenManager) { this.screenManager = screenManager; }
         public void Enter() { this.OpenDailyRewardPopup(); }
 
-        private async void OpenDailyRewardPopup()
+        private void OpenDailyRewardPopup()
         {
-            await this.screenManager.OpenScreen<DummyDailyRewardPresenter>();
+            
         }
 
         public void Exit() { }

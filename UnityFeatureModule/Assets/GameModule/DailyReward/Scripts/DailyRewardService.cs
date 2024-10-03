@@ -6,33 +6,55 @@
     using FeatureTemplate.Scripts.RewardHandle;
     using FeatureTemplate.Scripts.Services;
     using FeatureTemplate.Scripts.Signals;
+    using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
+    using global::DailyReward.GameModule.DailyReward.Blueprints;
     using global::DailyReward.GameModule.DailyReward.Data;
+    using global::DailyReward.GameModule.DailyReward.MVP;
     using UnityEngine;
     using Zenject;
 
-    public class DailyRewardService
+    public class DailyRewardService : IInitializable
     {
         private readonly DailyRewardDataController        dailyRewardDataController;
+        private readonly DailyRewardMiscParamBlueprint    dailyRewardMiscParamBlueprint;
+        private readonly ScreenManager                    screenManager;
         private readonly FeatureDailyRewardBlueprint      featureDailyRewardBlueprint;
         private readonly List<IFeatureRewardExecutorBase> rewardHandlers;
         private readonly SignalBus                        signalBus;
 
         // Constructor to initialize
-        public DailyRewardService(DailyRewardDataController dailyRewardDataController,
+        public DailyRewardService(DailyRewardDataController dailyRewardDataController, DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
+            ScreenManager screenManager,
             FeatureDailyRewardBlueprint featureDailyRewardBlueprint, List<IFeatureRewardExecutorBase> rewardHandlers, SignalBus signalBus)
         {
-            this.dailyRewardDataController   = dailyRewardDataController;
-            this.featureDailyRewardBlueprint = featureDailyRewardBlueprint;
-            this.rewardHandlers              = rewardHandlers;
-            this.signalBus                   = signalBus;
+            this.dailyRewardDataController     = dailyRewardDataController;
+            this.dailyRewardMiscParamBlueprint = dailyRewardMiscParamBlueprint;
+            this.screenManager                 = screenManager;
+            this.featureDailyRewardBlueprint   = featureDailyRewardBlueprint;
+            this.rewardHandlers                = rewardHandlers;
+            this.signalBus                     = signalBus;
         }
 
+        public async void Initialize()
+        {
+            if (this.dailyRewardMiscParamBlueprint.PopupOnBegin)
+            {
+                await this.screenManager.OpenScreen<DummyDailyRewardPresenter>();
+            }
+        }
         // Check if reward can be claimed (based on date, not exact hours)
         private bool CanClaimReward() { return IsNewDay(); }
 
+        public bool MoveToNextDayAndClaimReward()
+        {
+            this.dailyRewardDataController.DayOffSet++;
+            return this.ClaimReward();
+        }
+        
         // Claim reward if eligible
         public bool ClaimReward()
         {
+            this.LogMessage("TODAY IS: " + this.dailyRewardDataController.Today, Color.green);
             if (CanClaimReward())
             {
                 // Trigger the onRewardClaim event, passing the currentDay as argument
@@ -82,5 +104,6 @@
             // If the current day (at UTC) is different from the last claim day, it's a new day
             return currentDate > lastClaimDate;
         }
+
     }
 }

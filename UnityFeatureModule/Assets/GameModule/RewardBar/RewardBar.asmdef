@@ -1,6 +1,6 @@
 {
-    "name": "Game.Scripts",
-    "rootNamespace": "Game.Scripts",
+    "name": "RewardBar",
+    "rootNamespace": "RewardBar",
     "references": [
         "Zenject",
         "MessagePipe.Zenject",
@@ -18,8 +18,7 @@
         "Features.Scripts",
         "GameFoundation.BlueprintFlow",
         "3rdCore.Analytic",
-        "Unity.TextMeshPro",
-        "RewardBar"
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

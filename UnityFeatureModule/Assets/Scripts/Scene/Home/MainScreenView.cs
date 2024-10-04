@@ -1,15 +1,18 @@
 namespace Game.Scripts.Scene.Home
 {
     using Cysharp.Threading.Tasks;
+    using FeatureTemplate.Scripts.MonoUltils;
     using Game.Scripts.MVP;
     using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using GameFoundation.Scripts.UIModule.Utilities.GameQueueAction;
     using GameFoundation.Scripts.Utilities.LogService;
+    using RewardBar.GameModule.RewardBar.Scripts;
     using Zenject;
 
     public class MainScreenView : BaseScreenViewTemplate
     {
+        public FeatureButtonView btnShowRewardBar;
     }
 
     [ScreenInfo(nameof(MainScreenView))]
@@ -20,6 +23,28 @@ namespace Game.Scripts.Scene.Home
         {
         }
 
-        public override UniTask BindData() { return UniTask.CompletedTask; }
+        private int rewardIn;
+        private int rewardOut;
+
+        public override UniTask BindData()
+        {
+            
+            this.View.btnShowRewardBar.InitButtonEvent(this.ShowRewardBar,new FeatureButtonModel());
+            this.ScreenManager.OpenScreen<RewardBarPopupPresenter, RewardBarPopupModel>(new RewardBarPopupModel()
+            {
+                RewardIn = this.rewardIn,
+            }).Forget();
+
+            return UniTask.CompletedTask;
+        }
+
+        private void ShowRewardBar(FeatureButtonModel obj)
+        {
+            this.rewardIn = 10;
+            this.ScreenManager.OpenScreen<RewardBarPopupPresenter, RewardBarPopupModel>(new RewardBarPopupModel()
+            {
+                RewardIn = this.rewardIn,
+            }).Forget();
+        }
     }
 }

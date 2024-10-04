@@ -1,11 +1,10 @@
-namespace GameModule.RewardBar.Scripts
+namespace RewardBar.GameModule.RewardBar.Scripts
 {
     using System.Threading.Tasks;
     using DG.Tweening;
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
-    using Zenject;
 
     public class RewardBarView : MonoBehaviour
     {
@@ -13,11 +12,10 @@ namespace GameModule.RewardBar.Scripts
         public                    RectTransform   rewardBar; 
         public                    Button          stopButton; 
         public                    TextMeshProUGUI txtReward;
-
-        [Inject] private readonly DOTween         doTween;
-        private const float CursorSpeed   = 1000f;
-        private       bool  isMovingRight = true;
-        private       bool  isStopped     ;
+        
+        private const    float         CursorSpeed   = 1000f;
+        private          bool          isMovingRight = true;
+        private          bool          isStopped     ;
 
         // Positions cursor mark
         private readonly float[] rewardPositions = { -300f, -200f, -100f, 0f, 100f, 200f, 300f };
@@ -26,6 +24,7 @@ namespace GameModule.RewardBar.Scripts
 
         private void Start()
         {
+
             //Check the mark
             if (this.rewardPositions.Length != this.rewardMultipliers.Length)
             {

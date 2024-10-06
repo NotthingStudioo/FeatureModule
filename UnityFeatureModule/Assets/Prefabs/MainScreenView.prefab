@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 685515531095879603, guid: edc8e05feec326f4493bdb1d7fc3fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 338.5027
+      value: 408
       objectReference: {fileID: 0}
     - target: {fileID: 685515531095879603, guid: edc8e05feec326f4493bdb1d7fc3fcd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -118,6 +118,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 685515531095879603, guid: edc8e05feec326f4493bdb1d7fc3fcd9, type: 3}
   m_PrefabInstance: {fileID: 24965032273830668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8872995526074483989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8897855004953552409, guid: edc8e05feec326f4493bdb1d7fc3fcd9, type: 3}
+  m_PrefabInstance: {fileID: 24965032273830668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0b0698ccd7f0e4ab48a8c3340edb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6661842626558479223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,3 +287,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewRoot: {fileID: 0}
   screenTransition: {fileID: 0}
+  btnShowRewardBar: {fileID: 8872995526074483989}

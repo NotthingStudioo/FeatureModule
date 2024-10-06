@@ -23,17 +23,20 @@ namespace Game.Scripts.Scene.Home
         {
         }
 
-        private int rewardIn;
-        private int rewardOut;
+        private int                rewardIn;
+        private int                rewardOut;
+        private FeatureButtonModel btnShowRewardBar;
 
         public override UniTask BindData()
         {
-            
-            this.View.btnShowRewardBar.InitButtonEvent(this.ShowRewardBar,new FeatureButtonModel());
-            this.ScreenManager.OpenScreen<RewardBarPopupPresenter, RewardBarPopupModel>(new RewardBarPopupModel()
+            this.btnShowRewardBar = new FeatureButtonModel()
             {
-                RewardIn = this.rewardIn,
-            }).Forget();
+                ButtonName      = "Show Reward Bar",
+                ScreenPresenter = this,
+                ScreenViewName  = this.View.name,
+            };
+
+            this.View.btnShowRewardBar.InitButtonEvent(this.ShowRewardBar, this.btnShowRewardBar);
 
             return UniTask.CompletedTask;
         }
@@ -41,6 +44,7 @@ namespace Game.Scripts.Scene.Home
         private void ShowRewardBar(FeatureButtonModel obj)
         {
             this.rewardIn = 10;
+
             this.ScreenManager.OpenScreen<RewardBarPopupPresenter, RewardBarPopupModel>(new RewardBarPopupModel()
             {
                 RewardIn = this.rewardIn,

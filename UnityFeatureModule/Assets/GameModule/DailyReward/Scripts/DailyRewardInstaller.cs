@@ -1,6 +1,7 @@
 namespace DailyReward.GameModule.DailyReward.Scripts
 {
     using FeatureTemplate.Scripts.Signals;
+    using global::DailyReward.GameModule.DailyReward.Signals;
     using Zenject;
 
     public class DailyRewardInstaller : Installer<DailyRewardInstaller>
@@ -14,6 +15,7 @@ namespace DailyReward.GameModule.DailyReward.Scripts
         private void SignalDeclaration()
         {
             this.Container.DeclareSignal<RewardClaimSignal>();
+            this.Container.DeclareSignal<RewardAdapterSelectSignal>();
         }
     }
 }

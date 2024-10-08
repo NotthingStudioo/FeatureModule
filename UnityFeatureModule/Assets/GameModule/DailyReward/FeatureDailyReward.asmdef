@@ -11,7 +11,8 @@
         "UniTask",
         "Unity.TextMeshPro",
         "GameFoundation.AssetLibrary",
-        "OSA.Core"
+        "OSA.Core",
+        "GameFoundation.Utilities"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,10 +1,11 @@
-﻿namespace FeatureTemplate.Scripts.Signals
+﻿namespace DailyReward.GameModule.DailyReward.Signals
 {
     using System.Collections.Generic;
-    using FeatureTemplate.Scripts.Blueprints;
+    using global::DailyReward.GameModule.DailyReward.Blueprints;
 
     public class RewardClaimSignal
     {
         public List<Reward> Reward;
+        public int          Day;
     }
 }

@@ -43,7 +43,7 @@
         {
             if (this.dailyRewardMiscParamBlueprint.PopupOnBegin)
             {
-                await this.screenManager.OpenScreen<DummyDailyRewardPresenter>();
+                await this.screenManager.OpenScreen<DailyRewardPresenter>();
             }
             this.LogMessage("Today is " + this.dailyRewardDataController.Today, Color.green);
         }

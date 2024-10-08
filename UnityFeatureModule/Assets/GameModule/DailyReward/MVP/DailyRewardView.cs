@@ -17,7 +17,7 @@
     using Zenject;
     using Color = UnityEngine.Color;
 
-    public class DummyDailyRewardView : DailyRewardViewTemplate
+    public class DailyRewardView : DailyRewardViewTemplate
     {
         [SerializeField] public List<RewardSlotAdapter> adapters;
 
@@ -26,7 +26,7 @@
     }
 
     [PopupInfo("BaseDailyRewardView")]
-    public class DummyDailyRewardPresenter : DailyRewardPresenterTemplate
+    public class DailyRewardPresenter : DailyRewardPresenterTemplate
     {
         private readonly LoadImageHelper               loadImageHelper;
         private readonly DailyRewardDataController     dailyRewardDataController;
@@ -35,9 +35,9 @@
         private readonly DiContainer                   diContainer;
         private          int                           Page { get => this.dailyRewardDataController.Page; set => this.dailyRewardDataController.Page = value; }
         private          FeatureButtonModel            claimFeatureButtonModel;
-        private          DummyDailyRewardView          View => (DummyDailyRewardView)base.View;
+        private          DailyRewardView          View => (DailyRewardView)base.View;
 
-        public DummyDailyRewardPresenter(LoadImageHelper loadImageHelper, DailyRewardService dailyRewardService, SignalBus signalBus,
+        public DailyRewardPresenter(LoadImageHelper loadImageHelper, DailyRewardService dailyRewardService, SignalBus signalBus,
             DailyRewardDataController dailyRewardDataController, DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
             FeatureDailyRewardBlueprint featureDailyRewardBlueprint,
             ScreenManager screenManager, SceneDirector sceneDirector, DiContainer diContainer) : base(

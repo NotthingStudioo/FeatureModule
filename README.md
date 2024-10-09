@@ -1,4 +1,4 @@
-How to Add a Unity Package Using the Package Manager and a Git URL
+<H1>How to Add a Unity Package Using the Package Manager and a Git URL</H1>
 If you want to add a specific Unity package from a GitHub repository, you can do it easily using Unity's Package Manager. Below is a simple guide to help you add a package to your project.
 
 Steps

@@ -25,7 +25,7 @@
         public FeatureButtonView exitButton;
     }
 
-    [PopupInfo(nameof(DailyRewardView))]
+    [PopupInfo(nameof(DailyRewardView), isOverlay: true)]
     public class DailyRewardPresenter : FeatureBasePopupPresenterTemplate<DailyRewardView>
     {
         private readonly   DailyRewardDataController     dailyRewardDataController;
@@ -139,7 +139,7 @@
 
                 this.View.adapters[index].InitItemAdapter(iconList, this.diContainer).Forget();
             }
-            
+
             return UniTask.CompletedTask;
         }
 

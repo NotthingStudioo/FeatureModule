@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/FeatureTemplate" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Packages/com.3rd.core" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Packages/com.gdk.core" vcs="Git" />
   </component>

@@ -2,14 +2,15 @@
 {
     using FeatureTemplate.Scripts.MVP;
     using GameFoundation.Scripts.AssetLibrary;
+    using GameFoundation.Scripts.UIModule.Utilities.LoadImage;
+    using global::DailyReward.GameModule.DailyReward.Blueprints;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
 
     public class RewardSlotModel
     {
-        public Sprite            Sprite;
-        public RewardSlotAdapter RewardSlotAdapter;
+        public Reward            Reward;
     }
 
     public class RewardSlotView : FeatureBaseItemViewTemplate
@@ -19,15 +20,14 @@
 
     public class RewardSlotPresenter : FeatureBaseItemPresenterTemplate<RewardSlotView, RewardSlotModel>
     {
-        private RewardSlotModel model;
+        private readonly LoadImageHelper loadImageHelper;
 
-        public RewardSlotPresenter(SignalBus signalBus, IGameAssets gameAssets) : base(signalBus, gameAssets) { }
+        public RewardSlotPresenter(SignalBus signalBus, LoadImageHelper loadImageHelper, IGameAssets gameAssets) : base(signalBus, gameAssets) { this.loadImageHelper = loadImageHelper; }
 
-        public override void BindData(RewardSlotModel param)
+        public override async void BindData(RewardSlotModel param)
         {
-            this.model             = param;
-            this.View.image.sprite = param.Sprite;
             base.BindData(param);
+            this.View.image.sprite = await this.loadImageHelper.LoadLocalSprite(param.Reward.IconPath);
         }
     }
 }

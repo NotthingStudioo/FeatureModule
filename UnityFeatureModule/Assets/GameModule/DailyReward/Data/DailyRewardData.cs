@@ -24,10 +24,9 @@
 
         public void Init()
         {
-            this.LastSavedDay   = DateTime.Now;
-            this.SerializeFtl   = this.SerializeDateTime(this.LastSavedDay);
-            this.DayOffSet      = 0;
-            this.DailyRewards   = new();
+            this.SerializeFtl = this.SerializeDateTime(DateTime.Now);
+            this.DayOffSet    = 0;
+            this.DailyRewards = new();
         }
 
         private string SerializeDateTime(DateTime dateTime)

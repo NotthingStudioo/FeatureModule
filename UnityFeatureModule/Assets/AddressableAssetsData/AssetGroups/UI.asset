@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 7aa5ba925c3679a45ab15e686e074b46
   m_SerializeEntries:
   - m_GUID: 233161059c6e4b8488525d0686889d12
-    m_Address: BaseDailyRewardView
+    m_Address: DailyReward
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

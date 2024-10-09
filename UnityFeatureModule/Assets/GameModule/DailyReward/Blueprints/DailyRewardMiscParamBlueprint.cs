@@ -5,7 +5,10 @@
     [BlueprintReader("DailyRewardMiscParam")]
     public class DailyRewardMiscParamBlueprint : GenericBlueprintReaderByCol
     {
-        public bool PopupOnBegin { get; set; }
+        /// <summary>
+        /// Name of the presenter to show the popup
+        /// </summary>
+        public string StartOnScreen { get; set; }
         public int TimeLoop { get; set; }
     }
 }

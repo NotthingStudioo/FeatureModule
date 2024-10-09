@@ -10,7 +10,6 @@ namespace Game.Scripts.Installer.Scene.Main
         {
             base.InstallBindings();
             this.Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
-            DailyRewardInstaller.Install(this.Container);
             GameStateMachineInstaller.Install(this.Container);
         }
     }

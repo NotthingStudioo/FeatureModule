@@ -3,6 +3,7 @@ namespace DailyReward.GameModule.DailyReward.Scripts
     using global::DailyReward.GameModule.DailyReward.Signals;
     using Zenject;
 
+#if DAILY_REWARD
     public class DailyRewardInstaller : Installer<DailyRewardInstaller>
     {
         public override void InstallBindings()
@@ -10,10 +11,7 @@ namespace DailyReward.GameModule.DailyReward.Scripts
             this.SignalDeclaration();
             this.Container.BindInterfacesAndSelfTo<DailyRewardService>().AsCached().NonLazy();
         }
-
-        private void SignalDeclaration()
-        {
-            this.Container.DeclareSignal<RewardClaimSignal>();
-        }
+        private void SignalDeclaration() { this.Container.DeclareSignal<RewardClaimSignal>(); }
     }
+#endif
 }

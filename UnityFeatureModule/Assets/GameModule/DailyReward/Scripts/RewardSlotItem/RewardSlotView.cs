@@ -8,6 +8,7 @@
     using UnityEngine.UI;
     using Zenject;
 
+    #if DAILY_REWARD
     public class RewardSlotModel
     {
         public Reward            Reward;
@@ -30,4 +31,5 @@
             this.View.image.sprite = await this.loadImageHelper.LoadLocalSprite(param.Reward.IconPath);
         }
     }
+#endif
 }

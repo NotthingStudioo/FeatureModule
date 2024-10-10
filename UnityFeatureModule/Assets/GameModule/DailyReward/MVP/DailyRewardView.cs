@@ -17,6 +17,7 @@
     using Zenject;
     using Color = UnityEngine.Color;
 
+#if DAILY_REWARD
     public class DailyRewardView : FeatureBasePopupViewTemplate
     {
         [SerializeField] public List<RewardSlotAdapter> adapters;
@@ -41,11 +42,11 @@
             FeatureDailyRewardBlueprint featureDailyRewardBlueprint,
             ScreenManager screenManager, SceneDirector sceneDirector, DiContainer diContainer) : base(signalBus, screenManager, sceneDirector)
         {
-            this.DailyRewardService            = dailyRewardService;
-            this.dailyRewardDataController     = dailyRewardDataController;
+            this.DailyRewardService = dailyRewardService;
+            this.dailyRewardDataController = dailyRewardDataController;
             this.dailyRewardMiscParamBlueprint = dailyRewardMiscParamBlueprint;
-            this.featureDailyRewardBlueprint   = featureDailyRewardBlueprint;
-            this.diContainer                   = diContainer;
+            this.featureDailyRewardBlueprint = featureDailyRewardBlueprint;
+            this.diContainer = diContainer;
         }
 
         public override async UniTask BindData()
@@ -58,10 +59,10 @@
 
             this.claimFeatureButtonModel = new FeatureButtonModel
             {
-                ButtonName      = "btn_claim",
+                ButtonName = "btn_claim",
                 ScreenPresenter = this,
-                ScreenViewName  = this.View.name,
-                ButtonStatus    = ButtonStatus.On
+                ScreenViewName = this.View.name,
+                ButtonStatus = ButtonStatus.On
             };
 
             await this.Reload();
@@ -70,10 +71,10 @@
 
             this.View.exitButton.InitButtonEvent(_ => this.ClosePopup(), new FeatureButtonModel()
             {
-                ButtonName      = "btn_exit",
+                ButtonName = "btn_exit",
                 ScreenPresenter = this,
-                ScreenViewName  = this.View.name,
-                ButtonStatus    = ButtonStatus.On
+                ScreenViewName = this.View.name,
+                ButtonStatus = ButtonStatus.On
             });
 
             this.CheckButtonStatus();
@@ -191,4 +192,5 @@
             base.Dispose();
         }
     }
+#endif
 }

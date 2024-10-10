@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using BlueprintFlow.BlueprintReader;
     using FeatureTemplate.Scripts.RewardHandle;
-
+#if DAILY_REWARD
     [BlueprintReader("DailyRewardData")]
     public class FeatureDailyRewardBlueprint : GenericBlueprintReaderByRow<string, DailyRewardRecord>
     {
@@ -29,4 +29,5 @@
         public string RId      { get; set; }
         public string IconPath { get; set; }
     }
+#endif
 }

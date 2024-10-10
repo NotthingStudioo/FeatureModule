@@ -15,6 +15,7 @@
     using UnityEngine;
     using Zenject;
 
+    #if DAILY_REWARD
     public class DailyRewardService : IInitializable
     {
         private readonly DailyRewardDataController        dailyRewardDataController;
@@ -55,7 +56,7 @@
             if (screenShowSignal.ScreenPresenter.GetType().Name != this.dailyRewardMiscParamBlueprint.StartOnScreen) return;
 
             if (!this.IsNewDay()) return;
-            this.screenManager.OpenScreen<DailyRewardPresenter>().Forget();
+            this.screenManager.OpenScreen<DailyRewardPresenter>().Forget(); // Constraint force developer cannot modify the start daily reward scene
             this.LogMessage("Today is " + this.dailyRewardDataController.Today, Color.green);
         }
 
@@ -129,4 +130,5 @@
             return currentDate > lastClaimDate;
         }
     }
+#endif
 }

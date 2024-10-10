@@ -11,6 +11,7 @@
     using Sirenix.Utilities;
     using Zenject;
 
+#if DAILY_REWARD
     public class DailyRewardData : ILocalData, IFeatureLocalData
     {
         public  DateTime FirstTimeLogin => this.DeserializeDateTime(this.SerializeFtl) == null ? DateTime.Now : (DateTime)this.DeserializeDateTime(this.SerializeFtl);
@@ -25,7 +26,7 @@
         public void Init()
         {
             this.SerializeFtl = this.SerializeDateTime(DateTime.Now);
-            this.DayOffSet    = 0;
+            this.DayOffSet = 0;
             this.DailyRewards = new();
         }
 
@@ -54,10 +55,10 @@
         public DailyRewardDataController(DailyRewardData dailyRewardData, FeatureDataState featureDataState, DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
             FeatureDailyRewardBlueprint featureDailyRewardBlueprint)
         {
-            this.dailyRewardData               = dailyRewardData;
-            this.featureDataState              = featureDataState;
+            this.dailyRewardData = dailyRewardData;
+            this.featureDataState = featureDataState;
             this.dailyRewardMiscParamBlueprint = dailyRewardMiscParamBlueprint;
-            this.featureDailyRewardBlueprint   = featureDailyRewardBlueprint;
+            this.featureDailyRewardBlueprint = featureDailyRewardBlueprint;
         }
 
         public void Initialize()
@@ -101,4 +102,6 @@
             this.dailyRewardData.DailyRewards[this.featureDailyRewardBlueprint[day.ToString()].Id] = true;
         }
     }
+
+#endif
 }

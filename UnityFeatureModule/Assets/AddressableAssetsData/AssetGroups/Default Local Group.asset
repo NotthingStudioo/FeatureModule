@@ -16,10 +16,15 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 34f41b3a1c62d4a44baa9daa681d3ca7
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5a38954a213af3b40abda48223ca900b
+    m_Address: LeaderboardPopupView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: dc31dcd78eabb9d469d4d3668498ef06, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 171c760d54671e84abc2bad5a91f0295, type: 2}
     - {fileID: 11400000, guid: 4259ebac83e57de4e9fdd53163f18455, type: 2}
+    - {fileID: 11400000, guid: 171c760d54671e84abc2bad5a91f0295, type: 2}

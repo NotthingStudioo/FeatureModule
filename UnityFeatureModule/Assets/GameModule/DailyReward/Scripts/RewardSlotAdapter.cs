@@ -6,7 +6,7 @@
     using global::DailyReward.GameModule.DailyReward.Scripts.RewardSlotItem;
     using UnityEngine;
     using UnityEngine.UI;
-
+#if DAILY_REWARD
     public class RewardSlotAdapter : BasicGridAdapter<RewardSlotModel, RewardSlotView, RewardSlotPresenter>
     {
         [SerializeField] private FeatureButtonView featureButtonView;
@@ -20,8 +20,8 @@
             get => this.isLocked;
             set
             {
-                this.isLocked                  = value;
-                this.notOpenYet.enabled        = this.isLocked;
+                this.isLocked = value;
+                this.notOpenYet.enabled = this.isLocked;
                 this.featureButtonView.enabled = !value;
             }
         }
@@ -34,11 +34,11 @@
         {
             this.featureButtonView.InitButtonEvent(action, new FeatureButtonModel()
             {
-                ButtonName   = "unlock_tomorrow_reward",
+                ButtonName = "unlock_tomorrow_reward",
                 ButtonStatus = ButtonStatus.On
             });
 
-            this.done.enabled       = false;
+            this.done.enabled = false;
             this.notOpenYet.enabled = false;
         }
 
@@ -47,4 +47,5 @@
             this.done.enabled = true;
         }
     }
+#endif
 }

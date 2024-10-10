@@ -1,6 +1,8 @@
 namespace Game.Scripts.Installer.Scene.Main
 {
+#if DAILY_REWARD
     using DailyReward.GameModule.DailyReward.Scripts;
+#endif
     using Game.Scripts.Services;
     using Game.Scripts.StateMachine;
 

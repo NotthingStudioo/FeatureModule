@@ -3,60 +3,31 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.RewardHandle;
-    using FeatureTemplate.Scripts.Services;
-    using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
-    using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
     using global::DailyReward.GameModule.DailyReward.Blueprints;
     using global::DailyReward.GameModule.DailyReward.Data;
-    using global::DailyReward.GameModule.DailyReward.MVP;
     using global::DailyReward.GameModule.DailyReward.Signals;
     using UnityEngine;
     using Zenject;
 
-    public class DailyRewardService : IInitializable
+    public class DailyRewardService
     {
-        private readonly DailyRewardDataController        dailyRewardDataController;
-        private readonly FeatureDataState                 featureDataState;
-        private readonly FeatureRewardHandler             featureRewardHandler;
-        private readonly DailyRewardMiscParamBlueprint    dailyRewardMiscParamBlueprint;
-        private readonly ScreenManager                    screenManager;
-        private readonly FeatureDailyRewardBlueprint      featureDailyRewardBlueprint;
-        private readonly SignalBus                        signalBus;
+        private readonly DailyRewardDataController     dailyRewardDataController;
+        private readonly FeatureRewardHandler          featureRewardHandler;
+        private readonly DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint;
+        private readonly FeatureDailyRewardBlueprint   featureDailyRewardBlueprint;
+        private readonly SignalBus                     signalBus;
 
         // Constructor to initialize
-        public DailyRewardService(DailyRewardDataController dailyRewardDataController,FeatureDataState featureDataState, FeatureRewardHandler featureRewardHandler, DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
-            ScreenManager screenManager,
+        public DailyRewardService(DailyRewardDataController dailyRewardDataController, FeatureRewardHandler featureRewardHandler,
+            DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
             FeatureDailyRewardBlueprint featureDailyRewardBlueprint, SignalBus signalBus)
         {
             this.dailyRewardDataController     = dailyRewardDataController;
-            this.featureDataState              = featureDataState;
             this.featureRewardHandler          = featureRewardHandler;
             this.dailyRewardMiscParamBlueprint = dailyRewardMiscParamBlueprint;
-            this.screenManager                 = screenManager;
             this.featureDailyRewardBlueprint   = featureDailyRewardBlueprint;
             this.signalBus                     = signalBus;
-        }
-
-        public void Initialize()
-        {
-            this.signalBus.Subscribe<ScreenShowSignal>(this.OnScreenShowSignal);
-
-        }
-
-        protected virtual void OnScreenShowSignal(ScreenShowSignal screenShowSignal)
-        {
-            if (string.IsNullOrEmpty(this.dailyRewardMiscParamBlueprint.StartOnScreen)||!this.featureDataState.IsBlueprintAndLocalDataLoaded)
-            {
-                return;
-            }
-
-            if (screenShowSignal.ScreenPresenter.GetType().Name != this.dailyRewardMiscParamBlueprint.StartOnScreen) return;
-
-            if (!this.IsNewDay()) return;
-            this.screenManager.OpenScreen<DailyRewardPresenter>().Forget();
-            this.LogMessage("Today is " + this.dailyRewardDataController.Today, Color.green);
         }
 
         public bool UnlockNextDayReward()

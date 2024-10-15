@@ -7,7 +7,10 @@ In Unity, go to the top menu and click on Window > Package Manager.
 2. Add Package from Git URL
 In the Package Manager window, locate the + button in the top left corner.
 From the dropdown, select Add package from git URL....
-3. Insert the Git URL with the Desired Package Path
+
+![image](https://github.com/user-attachments/assets/c91d0418-9d95-47df-ba1b-8154a1e5de5f)
+
+4. Insert the Git URL with the Desired Package Path
 A text field will appear where you can paste the Git URL of the specific package. For example, to add a package named `[Package-to-use]` from your GitHub repository, use the following URL:
 
 ```

@@ -2,7 +2,7 @@
 If you want to add a specific Unity package from a GitHub repository, you can do it easily using Unity's Package Manager. Below is a simple guide to help you add a package to your project.
 
 Steps
-1. Open the Unity Package Manager
+1. Open the <a href="https://docs.unity3d.com/Manual/upm-ui.html" target="_blank">Unity Package Manager</a><br>
 In Unity, go to the top menu and click on Window > Package Manager.
 2. Add Package from Git URL
 In the Package Manager window, locate the + button in the top left corner.

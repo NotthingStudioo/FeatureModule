@@ -30,7 +30,7 @@ This will install the Daily Reward system into your project, ready for use!
 
 <h2>Daily Reward System</h2>
 
-<p><strong>1. Install the `DailyReward` to the Project Installer</strong></p>
+<p><strong>1. Install the <code>DailyReward</code> to the Project Installer</strong></p>
 <p>
 To integrate the Daily Reward system into your project, you'll need to bind it using the <strong>Zenject</strong> framework (if you're using it) or manually initialize it. Follow these steps:
 </p>
@@ -52,7 +52,7 @@ public class GameProjectInstaller : MonoInstaller
 
 <p><strong>2. Import Blueprint Data</strong></p>
 <p>
-The `DailyReward` system relies on blueprint data, typically stored in CSV files, to manage the reward configuration.
+The <code>DailyReward</code> system relies on blueprint data, typically stored in CSV files, to manage the reward configuration.
 </p>
 <p>
 - <strong>Navigate</strong> to the folder <code>GameModule/DailyReward/Resources/BlueprintDataSample</code>.<br>

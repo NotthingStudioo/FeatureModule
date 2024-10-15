@@ -27,3 +27,70 @@ https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Ass
 ```
 
 This will install the Daily Reward system into your project, ready for use!
+
+<h2>Daily Reward System</h2>
+
+<p><strong>1. Install the `DailyReward` to the Project Installer</strong></p>
+<p>
+To integrate the Daily Reward system into your project, you'll need to bind it using the <strong>Zenject</strong> framework (if you're using it) or manually initialize it. Follow these steps:
+</p>
+
+<p>
+- Open your <code>GameProjectInstaller</code> class (which is a MonoInstaller).<br>
+- Add the following code to the <code>InstallBindings</code> method to properly install the Daily Reward system:
+</p>
+
+``` Csharp
+public class GameProjectInstaller : MonoInstaller
+{
+    public override void InstallBindings() 
+    { 
+        DailyRewardInstaller.Install(this.Container); 
+    }
+}
+```
+
+<p><strong>2. Import Blueprint Data</strong></p>
+<p>
+The `DailyReward` system relies on blueprint data, typically stored in CSV files, to manage the reward configuration.
+</p>
+<p>
+- <strong>Navigate</strong> to the folder <code>GameModule/DailyReward/Resources/BlueprintDataSample</code>.<br>
+- <strong>Move</strong> all the <code>.csv</code> files from this folder to your own project's blueprint folder where other blueprints are stored.<br>
+- <strong>Modify the CSV files</strong> to match your reward structure if necessary.
+</p>
+
+<p><strong>3. Customize the Daily Reward Slot View</strong></p>
+<p>
+The <code>DailyRewardSlotView</code> is the visual component that displays the daily rewards to the player. You can either use the default view provided or create your own.
+</p>
+<p>
+- <strong>If you're using the default view</strong>:<br>
+   - Move the <code>DailyRewardSlotView</code> to Unity's Addressables system.<br>
+   - Optionally, simplify the name of the view.
+</p>
+<p>
+- <strong>If you're creating your own view</strong>:<br>
+   - Skip this step, and make sure your custom view adheres to the expected structure required by the Daily Reward system.
+</p>
+
+<p><strong>4. Modify the Default Screen Behavior</strong></p>
+<p>
+By default, the Daily Reward system will open on the <strong>Main Screen</strong> when the game starts. However, you can change this behavior:
+</p>
+<p>
+- <strong>Open the <code>DailyRewardMiscParam</code></strong> file.<br>
+- <strong>Find the <code>StartOnScreen</code> parameter</strong> and change its value to the screen name where you'd like the Daily Reward system to appear.
+</p>
+
+<p><strong>5. Configure the Reward Loop</strong></p>
+<p>
+The <code>TimeLoop</code> parameter represents the length of the reward cycle. You can customize it as follows:
+</p>
+<p>
+- <code>7</code> for a 7-day reward cycle.<br>
+- <code>30</code> for a 30-day reward cycle.<br>
+- <code>365</code> for an annual reward cycle.
+</p>
+
+<p>You can now customize the Daily Reward system to fit your game's structure and needs.</p>

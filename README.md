@@ -45,7 +45,7 @@ public class GameProjectInstaller : MonoInstaller
 {
     public override void InstallBindings() 
     { 
-        DailyRewardInstaller.Install(this.Container); 
+            DailyRewardInstaller<DailyRewardPresenter>.Install(this.Container); // DailyRewardPresenter is an example for View
     }
 }
 ```

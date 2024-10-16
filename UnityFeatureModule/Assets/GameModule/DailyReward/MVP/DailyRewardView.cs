@@ -4,96 +4,67 @@
     using System.Linq;
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.MonoUltils;
-    using FeatureTemplate.Scripts.MVP;
     using FeatureTemplate.Scripts.Services;
     using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using global::DailyReward.GameModule.DailyReward.Blueprints;
-    using global::DailyReward.GameModule.DailyReward.Data;
     using global::DailyReward.GameModule.DailyReward.Scripts;
     using global::DailyReward.GameModule.DailyReward.Scripts.RewardSlotItem;
-    using global::DailyReward.GameModule.DailyReward.Signals;
     using UnityEngine;
     using Zenject;
     using Color = UnityEngine.Color;
 
-    public class DailyRewardView : FeatureBasePopupViewTemplate
+    public class DailyRewardView : DailyRewardBaseView
     {
         [SerializeField] public List<RewardSlotAdapter> adapters;
-
-        public FeatureButtonView claimButton;
-        public FeatureButtonView exitButton;
     }
 
     [PopupInfo(nameof(DailyRewardView), isOverlay: true)]
-    public class DailyRewardPresenter : FeatureBasePopupPresenterTemplate<DailyRewardView>
+    public class DailyRewardPresenter : DailyRewardBasePresenter
     {
-        private readonly   DailyRewardDataController     dailyRewardDataController;
-        private readonly   DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint;
-        private readonly   FeatureDailyRewardBlueprint   featureDailyRewardBlueprint;
-        private readonly   DiContainer                   diContainer;
-        protected readonly DailyRewardService            DailyRewardService;
+        private readonly FeatureDailyRewardBlueprint featureDailyRewardBlueprint;
+        private readonly DiContainer                 diContainer;
+        public           DailyRewardView             View => (DailyRewardView)base.View;
 
         private FeatureButtonModel claimFeatureButtonModel;
 
-        public DailyRewardPresenter(DailyRewardService dailyRewardService, SignalBus signalBus,
-            DailyRewardDataController dailyRewardDataController, DailyRewardMiscParamBlueprint dailyRewardMiscParamBlueprint,
-            FeatureDailyRewardBlueprint featureDailyRewardBlueprint,
+        public DailyRewardPresenter(SignalBus signalBus, FeatureDailyRewardBlueprint featureDailyRewardBlueprint,
             ScreenManager screenManager, SceneDirector sceneDirector, DiContainer diContainer) : base(signalBus, screenManager, sceneDirector)
         {
-            this.DailyRewardService            = dailyRewardService;
-            this.dailyRewardDataController     = dailyRewardDataController;
-            this.dailyRewardMiscParamBlueprint = dailyRewardMiscParamBlueprint;
-            this.featureDailyRewardBlueprint   = featureDailyRewardBlueprint;
-            this.diContainer                   = diContainer;
+            this.featureDailyRewardBlueprint = featureDailyRewardBlueprint;
+            this.diContainer                 = diContainer;
         }
 
-        public override async UniTask BindData()
+        protected override async UniTask InternalBindData()
         {
-            this.SignalBus.Subscribe<RewardClaimSignal>(this.OnClaimReward);
-
             // ReSharper disable once PossibleLossOfFraction
             if (this.DailyRewardService.IsNewDay())
-                this.dailyRewardDataController.Page = Mathf.FloorToInt(this.dailyRewardDataController.Today / this.dailyRewardMiscParamBlueprint.TimeLoop);
-
-            this.claimFeatureButtonModel = new FeatureButtonModel
-            {
-                ButtonName      = "btn_claim",
-                ScreenPresenter = this,
-                ScreenViewName  = this.View.name,
-                ButtonStatus    = ButtonStatus.On
-            };
+                this.DailyRewardDataController.Page = Mathf.FloorToInt(this.DailyRewardDataController.Today / this.DailyRewardMiscParamBlueprint.TimeLoop);
 
             await this.Reload();
-
-            this.View.claimButton.InitButtonEvent(_ => this.ClaimButtonClick(), this.claimFeatureButtonModel);
-
-            this.View.exitButton.InitButtonEvent(_ => this.ClosePopup(), new FeatureButtonModel()
-            {
-                ButtonName      = "btn_exit",
-                ScreenPresenter = this,
-                ScreenViewName  = this.View.name,
-                ButtonStatus    = ButtonStatus.On
-            });
 
             this.CheckButtonStatus();
         }
 
+        protected override void OnClaimReward() { }
+
+        protected override int Today => this.DailyRewardDataController.Today;
+
         /// <summary>
-        /// Claim today reward
+        /// Claim reward at a specific day.
         /// </summary>
         /// <returns></returns>
         protected void ClaimReward(int day, GameObject source) { this.DailyRewardService.ClaimReward(day, source); }
 
-        private UniTask Reload()
+        protected override UniTask Reload()
         {
             // Calculate the current page start based on today's day and the TimeLoop.
             // For example, if today is day 9 and TimeLoop is 7, the page should show days 8-14.
-            var startDay = Mathf.FloorToInt((this.dailyRewardDataController.Today - 1) / this.dailyRewardMiscParamBlueprint.TimeLoop)
-                * this.dailyRewardMiscParamBlueprint.TimeLoop + 1;
+            var startDay = Mathf.FloorToInt((this.DailyRewardDataController.Today - 1) / this.DailyRewardMiscParamBlueprint.TimeLoop)
+                * this.DailyRewardMiscParamBlueprint.TimeLoop + 1;
 
             // Ensure we're showing a valid range of days, adjusting the Page property if necessary.
-            this.dailyRewardDataController.Page = (this.dailyRewardDataController.Today - 1) / this.dailyRewardMiscParamBlueprint.TimeLoop;
+            this.DailyRewardDataController.Page = (this.DailyRewardDataController.Today - 1) / this.DailyRewardMiscParamBlueprint.TimeLoop;
 
             for (var index = 0; index < this.View.adapters.Count; index++)
             {
@@ -111,20 +82,20 @@
                 item.InitButton(_ => this.UnlockReward());
 
                 // Lock the reward if the DayIndex is greater than today's day.
-                item.IsLocked = item.DayIndex > this.dailyRewardDataController.Today;
+                item.IsLocked = item.DayIndex > this.DailyRewardDataController.Today;
 
                 // Calculate which reward to display using modulo for looping.
-                var rewardDayIndex = (item.DayIndex - 1) % this.dailyRewardMiscParamBlueprint.TimeLoop + 1;
+                var rewardDayIndex = (item.DayIndex - 1) % this.DailyRewardMiscParamBlueprint.TimeLoop + 1;
 
                 // Set lock icon based on the current day and blueprint data.
                 if (this.featureDailyRewardBlueprint.Count >= rewardDayIndex)
                 {
-                    item.SetLockIcon(item.DayIndex == this.dailyRewardDataController.Today + 1 &&
+                    item.SetLockIcon(item.DayIndex == this.DailyRewardDataController.Today + 1 &&
                                      this.featureDailyRewardBlueprint[rewardDayIndex.ToString()].ShowAdsNextDay);
                 }
                 else
                 {
-                    item.SetLockIcon(item.DayIndex == this.dailyRewardDataController.Today + 1 &&
+                    item.SetLockIcon(item.DayIndex == this.DailyRewardDataController.Today + 1 &&
                                      this.featureDailyRewardBlueprint[(rewardDayIndex).ToString()].ShowAdsNextDay);
                 }
 
@@ -154,19 +125,19 @@
         private void CheckButtonStatus()
         {
             this.claimFeatureButtonModel.ButtonStatus =
-                this.View.adapters.Any(item => !item.IsLocked && !this.dailyRewardDataController.IsClaimed(item.DayIndex)) ? ButtonStatus.On : ButtonStatus.Off;
+                this.View.adapters.Any(item => !item.IsLocked && !this.DailyRewardDataController.IsClaimed(item.DayIndex)) ? ButtonStatus.On : ButtonStatus.Off;
 
-            foreach (var item in this.View.adapters.Where(x => this.dailyRewardDataController.IsClaimed(x.DayIndex)))
+            foreach (var item in this.View.adapters.Where(x => this.DailyRewardDataController.IsClaimed(x.DayIndex)))
             {
-                item.UpdateClaim();
+                item.UpdateClaim(true);
             }
 
             this.View.claimButton.RefreshButtonStatus();
         }
 
-        private void ClaimButtonClick()
+        protected override void ClaimButtonClick()
         {
-            foreach (var item in this.View.adapters.Where(item => !item.IsLocked && !this.dailyRewardDataController.IsClaimed(item.DayIndex)))
+            foreach (var item in this.View.adapters.Where(item => !item.IsLocked && !this.DailyRewardDataController.IsClaimed(item.DayIndex)))
             {
                 this.ClaimReward(item.DayIndex, item.gameObject);
             }
@@ -174,21 +145,11 @@
             this.CheckButtonStatus();
         }
 
-        private void ClosePopup() { this.CloseViewAsync().Forget(); }
-
         /// <summary>
         /// Read the reward at a specific day.
         /// </summary>
         /// <param name="dayOffset">The offset to that day calculate since today.</param>
         /// <returns></returns>
-        protected List<Reward> GetRewardsAt(int dayOffset) { return this.DailyRewardService.ReadRewardsAtDay(dayOffset); }
-
-        protected void OnClaimReward(RewardClaimSignal signal) { this.LogMessage("presenter receive claimed signal at day " + signal.Day, Color.green); }
-
-        public override void Dispose()
-        {
-            this.SignalBus.Unsubscribe<RewardClaimSignal>(this.OnClaimReward);
-            base.Dispose();
-        }
+        private List<Reward> GetRewardsAt(int dayOffset) { return this.DailyRewardService.ReadRewardsAtDay(dayOffset); }
     }
 }

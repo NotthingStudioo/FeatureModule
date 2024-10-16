@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using FeatureTemplate.Scripts.RewardHandle;
+    using FeatureTemplate.Scripts.Services;
     using global::DailyReward.GameModule.DailyReward.Blueprints;
     using global::DailyReward.GameModule.DailyReward.Data;
     using global::DailyReward.GameModule.DailyReward.Signals;
@@ -48,19 +49,21 @@
             // Trigger the onRewardClaim event, passing the currentDay as argument
             var currentRewards = this.featureDailyRewardBlueprint.GetRewards(day.ToString());
 
-            this.signalBus.Fire(new RewardClaimSignal()
-            {
-                Reward = currentRewards,
-                Day    = day
-            });
-
             var list = currentRewards.Select(rewardBlueprintData => new RewardRecord()
                 { RewardType = rewardBlueprintData.RewardType, RewardValue = rewardBlueprintData.RewardValue, RewardId = rewardBlueprintData.RewardId }).Cast<IRewardRecord>().ToList();
 
             this.featureRewardHandler.AddRewards(list, source);
             // Update claim time and save it
-            this.dailyRewardDataController.LastSavedDay = DateTime.UtcNow;
+            this.dailyRewardDataController.LastSavedDay   = DateTime.UtcNow;
+            this.dailyRewardDataController.LastClaimedDay = day;
+            this.LogMessage("Claim reward at day " + day, Color.green);
             this.dailyRewardDataController.ClaimReward(day);
+
+            this.signalBus.Fire(new RewardClaimSignal()
+            {
+                Reward = currentRewards,
+                Day    = day
+            });
         }
 
         public List<Reward> ReadRewardsAtDayOffSet(int dayOffset)

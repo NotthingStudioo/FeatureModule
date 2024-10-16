@@ -20,31 +20,35 @@
             get => this.isLocked;
             set
             {
-                this.isLocked                  = value;
-                this.notOpenYet.enabled        = this.isLocked;
-                this.featureButtonView.enabled = !value;
+                this.isLocked           = value;
+                this.notOpenYet.enabled = this.isLocked;
+
+                if (this.featureButtonView)
+                    this.featureButtonView.enabled = !value;
             }
         }
 
         public int DayIndex { get; set; }
 
-        public void SetLockIcon(bool enable) { this.featureButtonView.gameObject.SetActive(enable); }
+        public void SetLockIcon(bool enable)
+        {
+            if (this.featureButtonView)
+                this.featureButtonView.gameObject.SetActive(enable);
+        }
 
         public void InitButton(Action<FeatureButtonModel> action)
         {
-            this.featureButtonView.InitButtonEvent(action, new FeatureButtonModel()
-            {
-                ButtonName   = "unlock_tomorrow_reward",
-                ButtonStatus = ButtonStatus.On
-            });
+            if (this.featureButtonView)
+                this.featureButtonView.InitButtonEvent(action, new FeatureButtonModel()
+                {
+                    ButtonName   = "unlock_tomorrow_reward",
+                    ButtonStatus = ButtonStatus.On
+                });
 
             this.done.enabled       = false;
             this.notOpenYet.enabled = false;
         }
 
-        public void UpdateClaim()
-        {
-            this.done.enabled = true;
-        }
+        public void UpdateClaim(bool enable) { this.done.enabled = enable; }
     }
 }

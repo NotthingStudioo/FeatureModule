@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Drawing;
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.InterfacesAndEnumCommon;
     using FeatureTemplate.Scripts.Services;
@@ -13,7 +14,7 @@
 
     public class DailyRewardData : ILocalData, IFeatureLocalData
     {
-        public  DateTime FirstTimeLogin => this.DeserializeDateTime(this.SerializeFtl) == null ? DateTime.Now : (DateTime)this.DeserializeDateTime(this.SerializeFtl);
+        public DateTime FirstTimeLogin => this.DeserializeDateTime(this.SerializeFtl) == null ? DateTime.Now : (DateTime)this.DeserializeDateTime(this.SerializeFtl);
 
         public DateTime                 LastSavedDay;
         public string                   SerializeFtl;
@@ -21,12 +22,14 @@
         public Dictionary<string, bool> DailyRewards; //Daily reward id, claimed status
         public int                      Page = 0;
         public bool                     IsInit;
+        public int                      LastClaimedDay;
 
         public void Init()
         {
-            this.SerializeFtl = this.SerializeDateTime(DateTime.Now);
-            this.DayOffSet    = 0;
-            this.DailyRewards = new();
+            this.SerializeFtl   = this.SerializeDateTime(DateTime.Now);
+            this.DayOffSet      = 0;
+            this.DailyRewards   = new();
+            this.LastClaimedDay = 0;
         }
 
         private string SerializeDateTime(DateTime dateTime)
@@ -91,7 +94,14 @@
             this.dailyRewardMiscParamBlueprint.TimeLoop + this.dailyRewardData.DayOffSet
             : DateTime.Now.Day - this.dailyRewardData.FirstTimeLogin.Day + this.dailyRewardData.DayOffSet;
 
+        /// <summary>
+        /// Return the last claimed day in real time
+        /// </summary>
         public DateTime LastSavedDay { get => this.dailyRewardData.LastSavedDay; set => this.dailyRewardData.LastSavedDay = value; }
+        /// <summary>
+        /// Return the last claimed day calculate since the first time login
+        /// </summary>
+        public int LastClaimedDay { get => this.dailyRewardData.LastClaimedDay; set => this.dailyRewardData.LastClaimedDay = value; }
 
         public bool IsClaimed(int day) { return this.dailyRewardData.DailyRewards[this.featureDailyRewardBlueprint[day.ToString()].Id]; }
 
@@ -99,6 +109,11 @@
         {
             if (this.IsClaimed(day)) return;
             this.dailyRewardData.DailyRewards[this.featureDailyRewardBlueprint[day.ToString()].Id] = true;
+        }
+
+        public void ResetDailyReward()
+        {
+            this.featureDailyRewardBlueprint.ForEach(x => this.dailyRewardData.DailyRewards[x.Value.Id] = false);
         }
     }
 }

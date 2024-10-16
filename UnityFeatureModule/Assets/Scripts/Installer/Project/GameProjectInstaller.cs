@@ -1,5 +1,7 @@
 namespace Game.Scripts.Installer.Project
 {
+    using DailyReward.GameModule.DailyReward.MVP;
+    using DailyReward.GameModule.DailyReward.Scripts;
     using FeatureTemplate.Scripts.Installers;
     using FeatureTemplate.Scripts.Toast;
     using Game.Scripts.Services;
@@ -21,6 +23,7 @@ namespace Game.Scripts.Installer.Project
             //EventSystem
             this.Container.Bind<EventSystem>().FromComponentInNewPrefabResource("EventSystem").AsCached().NonLazy();
             this.Container.BindInterfacesAndSelfTo<GameDataState>().AsCached().NonLazy();
+            DailyRewardInstaller<DailyRewardDoubleRewardPresenter>.Install(this.Container);
         }
     }
 }

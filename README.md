@@ -34,6 +34,11 @@ This will install the Daily Reward system into your project, ready for use!
 <h2>Daily Reward System</h2>
 
 <p><strong>1. Install the <code>DailyReward</code> to the Project Installer</strong></p>
+
+```
+https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/DailyReward
+```
+
 <p>
 To integrate the Daily Reward system into your project, you'll need to bind it using the <strong>Zenject</strong> framework (if you're using it) or manually initialize it. Follow these steps:
 </p>
@@ -97,3 +102,30 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 </p>
 
 <p>You can now customize the Daily Reward system to fit your game's structure and needs.</p>
+
+<h2>Mission System</h2>
+
+<p><strong>1. Install the <code>Condition</code> to the Project Installer</strong></p>
+
+```
+https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Condition
+```
+
+<p><strong>2. Install the <code>Mission</code> to the Project Installer</strong></p>
+
+```
+https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Mission
+```
+
+<p> The MissionInstaller auto-install the condition system since it need it. Similar to the Daily Reward system, you'll bind it using the <strong>Zenject</strong> framework or manually initialize it: </p>
+
+``` Csharp
+public class GameProjectInstaller : MonoInstaller
+{
+    public override void InstallBindings() 
+    {
+            MissionInstaller.Install(this.Container);
+    }
+}
+```
+<p><strong>3. Import Mission Blueprint Data</strong></p> <p> The <code>Mission</code> system also relies on blueprint data stored in CSV files to manage the mission configuration. </p> <p> - <strong>Navigate</strong> to the folder <code>GameModule/Mission/Resources/BlueprintDataSample</code>.<br> - <strong>Move</strong> all the <code>.csv</code> files from this folder to your project's blueprint folder.<br> - <strong>Modify the CSV files</strong> to match your mission structure if necessary. </p>

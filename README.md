@@ -109,8 +109,13 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 
 <h2>Condition System</h2>
 
+<p><strong>1. Install the <code>Condition</code> to the Project Installer</strong></p>
+
+```
+https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Condition
+```
 <figure>
-    <img src="https://github.com/user-attachments/assets/ae5acef4-3db3-43b3-8b84-4a35e4643b2f" alt="Condition System" width="800" /><br>
+    <img src="https://github.com/user-attachments/assets/e5e83693-7920-4426-98c9-751c53b9cd90" alt="Condition System" width="800" /><br>
     <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
 </figure>
 

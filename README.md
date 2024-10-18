@@ -33,6 +33,10 @@ This will install the Daily Reward system into your project, ready for use!
 
 <h2>Daily Reward System</h2>
 
+<h3>System Architecture</h3>
+
+<img src="https://github.com/user-attachments/assets/4c13b7c8-e194-49f6-81b1-39930255d67e" alt="image" width="400" />
+
 <p><strong>1. Install the <code>DailyReward</code> to the Project Installer</strong></p>
 
 ```
@@ -102,6 +106,14 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 </p>
 
 <p>You can now customize the Daily Reward system to fit your game's structure and needs.</p>
+
+<h2>Condition System</h2>
+
+<figure>
+    <img src="https://github.com/user-attachments/assets/ae5acef4-3db3-43b3-8b84-4a35e4643b2f" alt="Condition System" width="400" />
+    <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
+</figure>
+
 
 <h2>Mission System</h2>
 

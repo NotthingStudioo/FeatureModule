@@ -72,7 +72,6 @@
         public bool                  IsCompleted { get; set; } = false;
         public DateTime?             StartTime   { get; set; }
         public ReactiveProperty<int> Timer       { get; set; } = new(0); // Reactive timer property
-        public float                 Progress    { get; set; } = 0;
     }
 
     public class MissionDataController : IFeatureControllerData

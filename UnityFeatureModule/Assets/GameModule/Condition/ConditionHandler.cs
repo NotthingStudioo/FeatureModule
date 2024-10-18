@@ -19,5 +19,10 @@
         {
             return conditionRecords.All(this.CheckCondition);
         }
+        
+        public float GetProgress(IConditionRecord conditionRecord)
+        {
+            return this.conditions.Where(condition => condition.ConditionId == conditionRecord.ConditionId).Select(condition => condition.GetProgress(conditionRecord)).FirstOrDefault();
+        }
     }
 }

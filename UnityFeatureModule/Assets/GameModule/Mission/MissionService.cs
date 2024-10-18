@@ -162,5 +162,15 @@
             this.missionDataController.CompleteMission(missionRecord);
             this.missionDataController.GrantMissionReward(missionRecord);
         }
+
+        /// <summary>
+        /// Check the progress of a specific mission condition.
+        /// </summary>
+        /// <param name="missionRecord">The target misison</param>
+        /// <returns>Value from 0 to 1 as a percentage of progress</returns>
+        public float CheckMissionProgress(IConditionRecord missionRecord)
+        {
+            return this.conditionHandler.GetProgress(missionRecord);
+        }
     }
 }

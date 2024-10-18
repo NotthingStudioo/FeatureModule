@@ -1,6 +1,6 @@
 {
   "name": "com.mission.module",
   "version": "1.0.0",
-  "displayName": "Mission",
+  "displayName": "GameModule.Mission",
   "dependencies": {}
 }

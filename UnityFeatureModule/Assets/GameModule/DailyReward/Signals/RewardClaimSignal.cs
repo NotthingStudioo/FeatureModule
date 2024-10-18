@@ -1,7 +1,7 @@
-﻿namespace GameModule.GameModule.DailyReward.Signals
+﻿namespace GameModule.DailyReward.Signals
 {
     using System.Collections.Generic;
-    using global::GameModule.GameModule.DailyReward.Blueprints;
+    using GameModule.DailyReward.Blueprints;
 
     public class RewardClaimSignal
     {

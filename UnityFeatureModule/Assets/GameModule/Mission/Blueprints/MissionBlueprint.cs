@@ -5,7 +5,7 @@
     using System.Linq;
     using BlueprintFlow.BlueprintReader;
     using FeatureTemplate.Scripts.RewardHandle;
-    using global::GameModule.GameModule.DailyReward.Blueprints;
+    using global::GameModule.DailyReward.Blueprints;
 
     [BlueprintReader("MissionData")]
     public class MissionBlueprint : GenericBlueprintReaderByRow<string, MissionRecordRecord>

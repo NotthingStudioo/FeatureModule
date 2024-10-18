@@ -1,4 +1,4 @@
-﻿namespace GameModule.GameModule.DailyReward.Blueprints
+﻿namespace GameModule.DailyReward.Blueprints
 {
     using System;
     using System.Collections.Generic;

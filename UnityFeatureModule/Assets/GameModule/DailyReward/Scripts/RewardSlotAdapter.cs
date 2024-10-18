@@ -1,9 +1,9 @@
-﻿namespace GameModule.GameModule.DailyReward.Scripts
+﻿namespace GameModule.DailyReward.Scripts
 {
     using System;
     using FeatureTemplate.Scripts.MonoUltils;
     using GameFoundation.Scripts.UIModule.Adapter;
-    using global::GameModule.GameModule.DailyReward.Scripts.RewardSlotItem;
+    using GameModule.DailyReward.Scripts.RewardSlotItem;
     using UnityEngine;
     using UnityEngine.UI;
 

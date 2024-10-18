@@ -1,13 +1,13 @@
-﻿namespace GameModule.GameModule.DailyReward.Scripts
+﻿namespace GameModule.DailyReward.Scripts
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using FeatureTemplate.Scripts.RewardHandle;
     using FeatureTemplate.Scripts.Services;
-    using global::GameModule.GameModule.DailyReward.Blueprints;
-    using global::GameModule.GameModule.DailyReward.Data;
-    using global::GameModule.GameModule.DailyReward.Signals;
+    using GameModule.DailyReward.Blueprints;
+    using GameModule.DailyReward.Data;
+    using GameModule.DailyReward.Signals;
     using UnityEngine;
     using Zenject;
 

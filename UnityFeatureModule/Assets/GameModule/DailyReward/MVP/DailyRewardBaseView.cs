@@ -1,13 +1,13 @@
-﻿namespace GameModule.GameModule.DailyReward.MVP
+﻿namespace GameModule.DailyReward.MVP
 {
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.MonoUltils;
     using FeatureTemplate.Scripts.MVP;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
-    using global::GameModule.GameModule.DailyReward.Blueprints;
-    using global::GameModule.GameModule.DailyReward.Data;
-    using global::GameModule.GameModule.DailyReward.Scripts;
-    using global::GameModule.GameModule.DailyReward.Signals;
+    using GameModule.DailyReward.Blueprints;
+    using GameModule.DailyReward.Data;
+    using GameModule.DailyReward.Scripts;
+    using GameModule.DailyReward.Signals;
     using Zenject;
 
     public class DailyRewardBaseView : FeatureBasePopupViewTemplate

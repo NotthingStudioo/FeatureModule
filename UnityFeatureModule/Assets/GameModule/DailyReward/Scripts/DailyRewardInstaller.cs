@@ -1,12 +1,12 @@
-namespace GameModule.GameModule.DailyReward.Scripts
+namespace GameModule.DailyReward.Scripts
 {
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.Services;
     using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Signals;
-    using global::GameModule.GameModule.DailyReward.Blueprints;
-    using global::GameModule.GameModule.DailyReward.Signals;
+    using GameModule.DailyReward.Blueprints;
+    using GameModule.DailyReward.Signals;
     using Zenject;
 
     // Input T as popup screen

@@ -1,10 +1,9 @@
-﻿namespace DailyReward.GameModule.DailyReward.Scripts.RewardSlotItem
+﻿namespace GameModule.DailyReward.Scripts.RewardSlotItem
 {
     using FeatureTemplate.Scripts.MVP;
     using GameFoundation.Scripts.AssetLibrary;
     using GameFoundation.Scripts.UIModule.Utilities.LoadImage;
-    using global::DailyReward.GameModule.DailyReward.Blueprints;
-    using UnityEngine;
+    using GameModule.DailyReward.Blueprints;
     using UnityEngine.UI;
     using Zenject;
 

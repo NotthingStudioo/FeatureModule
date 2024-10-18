@@ -1,0 +1,16 @@
+{
+    "name": "Condition",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ca8126ffeb0d78e4784fb6f43f613ee4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

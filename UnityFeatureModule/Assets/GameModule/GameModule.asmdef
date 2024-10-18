@@ -1,6 +1,6 @@
 {
-    "name": "FeatureDailyReward",
-    "rootNamespace": "DailyReward",
+    "name": "GameModule",
+    "rootNamespace": "GameModule",
     "references": [
         "Zenject",
         "Features.Scripts",

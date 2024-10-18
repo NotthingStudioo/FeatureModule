@@ -1,11 +1,11 @@
-﻿namespace GameModule.GameModule.Mission.Blueprints
+﻿namespace GameModule.Mission.Blueprints
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using BlueprintFlow.BlueprintReader;
     using FeatureTemplate.Scripts.RewardHandle;
-    using global::GameModule.DailyReward.Blueprints;
+    using GameModule.Condition;
 
     [BlueprintReader("MissionData")]
     public class MissionBlueprint : GenericBlueprintReaderByRow<string, MissionRecordRecord>
@@ -80,5 +80,13 @@
         public string ConditionId    { get; set; }
         public string ConditionType  { get; set; }
         public string ConditionParam { get; set; }
+    }
+    
+    [Serializable]
+    [CsvHeaderKey("RId")]
+    public class Reward : RewardRecord
+    {
+        public string RId      { get; set; }
+        public string IconPath { get; set; }
     }
 }

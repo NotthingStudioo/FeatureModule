@@ -1,7 +1,5 @@
-﻿namespace GameModule.GameModule.Condition
+﻿namespace GameModule.Condition
 {
-    using global::GameModule.GameModule.Mission.Blueprints;
-
     public interface ICondition
     {
         string ConditionId { get; }

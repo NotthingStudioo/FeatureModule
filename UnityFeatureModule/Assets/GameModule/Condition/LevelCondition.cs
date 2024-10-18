@@ -1,7 +1,6 @@
-﻿namespace GameModule.GameModule.Condition
+﻿namespace GameModule.Condition
 {
     using FeatureTemplate.Scripts.Models.Controllers;
-    using global::GameModule.GameModule.Mission.Blueprints;
     using UnityEngine;
     using Zenject;
 

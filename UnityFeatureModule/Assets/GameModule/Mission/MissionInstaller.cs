@@ -1,8 +1,8 @@
-﻿namespace GameModule.GameModule.Mission
+﻿namespace GameModule.Mission
 {
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
-    using global::GameModule.GameModule.Condition;
-    using global::GameModule.GameModule.Mission.MVP;
+    using GameModule.Condition;
+    using GameModule.Mission.MVP;
     using Zenject;
 
     public class MissionInstaller : Installer<MissionInstaller>

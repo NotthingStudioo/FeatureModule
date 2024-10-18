@@ -1,11 +1,11 @@
-﻿namespace GameModule.GameModule.Mission
+﻿namespace GameModule.Mission
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using global::GameModule.GameModule.Condition;
-    using global::GameModule.GameModule.Mission.Blueprints;
-    using global::GameModule.GameModule.Mission.Data;
+    using GameModule.Condition;
+    using GameModule.Mission.Blueprints;
+    using GameModule.Mission.Data;
     using R3;
     using UnityEngine;
     using Zenject;

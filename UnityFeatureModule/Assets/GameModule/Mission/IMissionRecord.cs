@@ -1,9 +1,9 @@
-﻿namespace GameModule.GameModule.Mission
+﻿namespace GameModule.Mission
 {
     using System;
     using System.Collections.Generic;
     using FeatureTemplate.Scripts.RewardHandle;
-    using global::GameModule.GameModule.Mission.Blueprints;
+    using GameModule.Condition;
 
     public interface IMissionRecord
     {

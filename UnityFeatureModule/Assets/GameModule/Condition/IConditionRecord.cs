@@ -1,4 +1,4 @@
-﻿namespace GameModule.GameModule.Mission.Blueprints
+﻿namespace GameModule.Condition
 {
     public interface IConditionRecord
     {

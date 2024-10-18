@@ -1,8 +1,7 @@
-﻿namespace GameModule.GameModule.Condition
+﻿namespace GameModule.Condition
 {
     using System.Collections.Generic;
     using System.Linq;
-    using global::GameModule.GameModule.Mission.Blueprints;
 
     public class ConditionHandler
     {

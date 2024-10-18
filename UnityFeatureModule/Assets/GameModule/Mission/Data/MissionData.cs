@@ -1,4 +1,4 @@
-﻿namespace GameModule.GameModule.Mission.Data
+﻿namespace GameModule.Mission.Data
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using FeatureTemplate.Scripts.InterfacesAndEnumCommon;
     using FeatureTemplate.Scripts.RewardHandle;
     using GameFoundation.Scripts.Interfaces;
-    using global::GameModule.GameModule.Mission.Blueprints;
+    using GameModule.Mission.Blueprints;
     using R3;
 
     public class MissionData : ILocalData, IFeatureLocalData

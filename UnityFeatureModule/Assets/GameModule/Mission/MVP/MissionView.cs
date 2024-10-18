@@ -1,4 +1,4 @@
-﻿namespace GameModule.GameModule.Mission.MVP
+﻿namespace GameModule.Mission.MVP
 {
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.MVP;

@@ -2,5 +2,7 @@
   "name": "com.mission.module",
   "version": "1.0.0",
   "displayName": "GameModule.Mission",
-  "dependencies": {}
+  "dependencies": {
+    "com.condition.module": "1.0.0"
+  }
 }

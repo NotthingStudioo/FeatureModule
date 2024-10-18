@@ -110,7 +110,7 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 <h2>Condition System</h2>
 
 <figure>
-    <img src="https://github.com/user-attachments/assets/ae5acef4-3db3-43b3-8b84-4a35e4643b2f" alt="Condition System" width="400" />
+    <img src="https://github.com/user-attachments/assets/ae5acef4-3db3-43b3-8b84-4a35e4643b2f" alt="Condition System" width="800" /><br>
     <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
 </figure>
 

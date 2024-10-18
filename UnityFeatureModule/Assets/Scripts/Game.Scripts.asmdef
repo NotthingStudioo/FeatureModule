@@ -19,7 +19,7 @@
         "GameFoundation.BlueprintFlow",
         "3rdCore.Analytic",
         "Unity.TextMeshPro",
-        "FeatureDailyReward"
+        "GameModule"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

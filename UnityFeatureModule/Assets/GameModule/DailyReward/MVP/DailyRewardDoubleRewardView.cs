@@ -1,4 +1,4 @@
-﻿namespace DailyReward.GameModule.DailyReward.MVP
+﻿namespace GameModule.DailyReward.MVP
 {
     using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
@@ -7,7 +7,7 @@
     using FeatureTemplate.Scripts.Services.Ads;
     using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
-    using global::DailyReward.GameModule.DailyReward.Scripts;
+    using GameModule.DailyReward.Scripts;
     using UnityEngine;
     using Zenject;
 

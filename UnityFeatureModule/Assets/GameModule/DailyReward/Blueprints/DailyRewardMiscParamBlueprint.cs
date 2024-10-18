@@ -1,4 +1,4 @@
-﻿namespace DailyReward.GameModule.DailyReward.Blueprints
+﻿namespace GameModule.DailyReward.Blueprints
 {
     using BlueprintFlow.BlueprintReader;
 

@@ -1,4 +1,4 @@
-﻿namespace DailyReward.GameModule.DailyReward.Blueprints
+﻿namespace GameModule.DailyReward.Blueprints
 {
     using System;
     using System.Collections.Generic;
@@ -24,6 +24,7 @@
     }
 
     [Serializable]
+    [CsvHeaderKey("RId")]
     public class Reward : RewardRecord
     {
         public string RId      { get; set; }

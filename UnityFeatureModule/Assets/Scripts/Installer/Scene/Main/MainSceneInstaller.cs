@@ -1,6 +1,5 @@
 namespace Game.Scripts.Installer.Scene.Main
 {
-    using DailyReward.GameModule.DailyReward.Scripts;
     using Game.Scripts.Services;
     using Game.Scripts.StateMachine;
 

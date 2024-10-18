@@ -1,13 +1,12 @@
-﻿namespace DailyReward.GameModule.DailyReward.Data
+﻿namespace GameModule.DailyReward.Data
 {
     using System;
     using System.Collections.Generic;
-    using System.Drawing;
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.InterfacesAndEnumCommon;
     using FeatureTemplate.Scripts.Services;
     using GameFoundation.Scripts.Interfaces;
-    using global::DailyReward.GameModule.DailyReward.Blueprints;
+    using GameModule.DailyReward.Blueprints;
     using Newtonsoft.Json;
     using Sirenix.Utilities;
     using Zenject;
@@ -98,6 +97,7 @@
         /// Return the last claimed day in real time
         /// </summary>
         public DateTime LastSavedDay { get => this.dailyRewardData.LastSavedDay; set => this.dailyRewardData.LastSavedDay = value; }
+
         /// <summary>
         /// Return the last claimed day calculate since the first time login
         /// </summary>
@@ -111,9 +111,6 @@
             this.dailyRewardData.DailyRewards[this.featureDailyRewardBlueprint[day.ToString()].Id] = true;
         }
 
-        public void ResetDailyReward()
-        {
-            this.featureDailyRewardBlueprint.ForEach(x => this.dailyRewardData.DailyRewards[x.Value.Id] = false);
-        }
+        public void ResetDailyReward() { this.featureDailyRewardBlueprint.ForEach(x => this.dailyRewardData.DailyRewards[x.Value.Id] = false); }
     }
 }

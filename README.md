@@ -1,4 +1,15 @@
 <H1>How to Add a Unity Package Using the Package Manager and a Git URL</H1>
+
+<h2>Table of Contents</h1>
+<ol>
+    <li><a href="#how-to-add-a-unity-package-using-the-package-manager-and-a-git-url">Import module to your project</a></li>
+    <li><a href="#daily-reward-system">Daily Reward System</a></li>
+    <li><a href="#condition-system">Condition System</a></li>
+    <li><a href="#mission-system">Mission System</a></li>
+    <li><a href="#shop-system">Shop System</a></li>
+</ol>
+
+<h2>Import module to your project</h2>
 If you want to add a specific Unity package from a GitHub repository, you can do it easily using Unity's Package Manager. Below is a simple guide to help you add a package to your project.
 
 Steps
@@ -146,3 +157,28 @@ public class GameProjectInstaller : MonoInstaller
 }
 ```
 <p><strong>3. Import Mission Blueprint Data</strong></p> <p> The <code>Mission</code> system also relies on blueprint data stored in CSV files to manage the mission configuration. </p> <p> - <strong>Navigate</strong> to the folder <code>GameModule/Mission/Resources/BlueprintDataSample</code>.<br> - <strong>Move</strong> all the <code>.csv</code> files from this folder to your project's blueprint folder.<br> - <strong>Modify the CSV files</strong> to match your mission structure if necessary. </p>
+
+<h2>Shop System</h2>
+ <p><strong>1. Install the <code>Shop</code> module to the Project Installer</strong></p>
+ 
+```
+https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Shop
+```
+
+<p>Similar to the Mission System, the <code>Shop</code> system requires installation using the <strong>Zenject</strong> framework. You can integrate it into your game project using the following method:</p>
+
+``` Csharp
+public class GameProjectInstaller : MonoInstaller
+{
+    public override void InstallBindings() 
+    {
+        ShopInstaller.Install(this.Container);
+    }
+}
+```
+
+<p>The <code>ShopInstaller</code> will auto-install dependencies such as the <code>Condition</code> system if they are required by the shop module.</p> <p><strong>2. Configure Shop Data</strong></p> <p>Similar to the Mission system, the <code>Shop</code> system relies on external configuration files such as CSV or JSON for setting up shop items, costs, and rewards. Follow these steps to configure your shop data:</p>
+<strong>Navigate</strong> to the folder <code>GameModule/Shop/Resources/ShopDataSample</code>.
+<strong>Move</strong> the sample configuration files into your project folder for customization.
+<strong>Modify the configuration files</strong> to align with your game's shop structure, prices, and rewards.
+By following this setup, the Shop System will be ready to integrate into your game along with other modules like the Mission system.

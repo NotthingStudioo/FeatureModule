@@ -63,7 +63,7 @@
 
         private void ClosePopup() { this.CloseViewAsync().Forget(); }
 
-        protected abstract void OnClaimReward();
+        protected abstract void OnClaimReward(RewardClaimSignal rewardClaimSignal);
 
         protected abstract int Today { get; }
 

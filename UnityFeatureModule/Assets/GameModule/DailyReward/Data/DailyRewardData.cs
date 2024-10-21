@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.InterfacesAndEnumCommon;
     using FeatureTemplate.Scripts.Services;
@@ -112,5 +113,10 @@
         }
 
         public void ResetDailyReward() { this.featureDailyRewardBlueprint.ForEach(x => this.dailyRewardData.DailyRewards[x.Value.Id] = false); }
+        
+        public List<string> GetIconPaths(int day)
+        {
+            return this.featureDailyRewardBlueprint.GetRewards(day.ToString()).Select(x => x.IconPath).ToList();
+        }
     }
 }

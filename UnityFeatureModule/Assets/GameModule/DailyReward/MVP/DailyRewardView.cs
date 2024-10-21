@@ -135,8 +135,13 @@
             this.View.claimButton.RefreshButtonStatus();
         }
 
-        protected override void ClaimButtonClick()
+        protected override void ClaimButtonClick(FeatureButtonModel model)
         {
+            if (model.ButtonStatus == ButtonStatus.Off)
+            {
+                return;
+            }
+            
             foreach (var item in this.View.adapters.Where(item => !item.IsLocked && !this.DailyRewardDataController.IsClaimed(item.DayIndex)))
             {
                 this.ClaimReward(item.DayIndex, item.gameObject);

@@ -119,17 +119,18 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 <p>You can now customize the Daily Reward system to fit your game's structure and needs.</p>
 
 <h2>Condition System</h2>
+<h3>System architecture</h3>
+
+<figure>
+    <img src="https://github.com/user-attachments/assets/e5e83693-7920-4426-98c9-751c53b9cd90" alt="Condition System" width="800" /><br>
+    <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
+</figure>
 
 <p><strong>1. Install the <code>Condition</code> to the Project Installer</strong></p>
 
 ```
 https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Condition
 ```
-<figure>
-    <img src="https://github.com/user-attachments/assets/e5e83693-7920-4426-98c9-751c53b9cd90" alt="Condition System" width="800" /><br>
-    <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
-</figure>
-
 
 <h2>Mission System</h2>
 
@@ -159,6 +160,13 @@ public class GameProjectInstaller : MonoInstaller
 <p><strong>3. Import Mission Blueprint Data</strong></p> <p> The <code>Mission</code> system also relies on blueprint data stored in CSV files to manage the mission configuration. </p> <p> - <strong>Navigate</strong> to the folder <code>GameModule/Mission/Resources/BlueprintDataSample</code>.<br> - <strong>Move</strong> all the <code>.csv</code> files from this folder to your project's blueprint folder.<br> - <strong>Modify the CSV files</strong> to match your mission structure if necessary. </p>
 
 <h2>Shop System</h2>
+<h3>System Architecture</h3>
+<figure>
+    <img src="https://github.com/user-attachments/assets/fde6dfcf-5778-449e-9f8a-d9ac2bc868bc" alt="Shop System" width="400" height="600" /><br>
+    <figcaption>Figure 1: Sequence diagram of the Shop System</figcaption>
+</figure>
+
+
  <p><strong>1. Install the <code>Shop</code> module to the Project Installer</strong></p>
  
 ```

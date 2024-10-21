@@ -61,7 +61,7 @@
 
             this.signalBus.Fire(new RewardClaimSignal()
             {
-                Reward = currentRewards,
+                Reward = currentRewards.Cast<IRewardRecord>().ToList(),
                 Day    = day
             });
         }

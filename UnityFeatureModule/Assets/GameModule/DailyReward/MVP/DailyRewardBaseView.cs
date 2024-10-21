@@ -48,12 +48,16 @@
                 ButtonStatus    = ButtonStatus.On
             };
 
-            this.View.claimButton.InitButtonEvent(_ => this.ClaimButtonClick(), this.ClaimFeatureButtonModel);
+            this.View.claimButton.InitButtonEvent(this.ClaimButtonClick, this.ClaimFeatureButtonModel);
 
             return this.InternalBindData();
         }
-        
-        protected virtual void ClaimButtonClick() { this.DailyRewardService.ClaimReward(this.Today, null); }
+
+        protected virtual void ClaimButtonClick(FeatureButtonModel model)
+        {
+            if(model.ButtonStatus == ButtonStatus.Off) return;
+            this.DailyRewardService.ClaimReward(this.Today, null);
+        }
 
         protected abstract UniTask InternalBindData();
 

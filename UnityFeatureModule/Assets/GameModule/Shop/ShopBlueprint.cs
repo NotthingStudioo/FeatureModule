@@ -8,6 +8,15 @@
     [BlueprintReader("Shop")]
     public class ShopBlueprint : GenericBlueprintReaderByRow<string, ShopRecord>
     {
+        public string GetIconPath(ITransactionRecord record)
+        {
+            return this[record.Id].Icon;
+        }
+        
+        public string GetTitle(ITransactionRecord record)
+        {
+            return this[record.Id].Title;
+        }
     }
 
     public interface ITransactionRecord

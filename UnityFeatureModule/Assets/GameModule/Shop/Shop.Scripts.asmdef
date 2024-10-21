@@ -1,0 +1,27 @@
+{
+    "name": "Shop.Scripts",
+    "rootNamespace": "",
+    "references": [
+        "Features.Scripts",
+        "Zenject-Signals",
+        "GameFoundation.UIModule",
+        "GameFoundation.Utilities",
+        "UniTask",
+        "UniTask.Addressables",
+        "Zenject",
+        "Unity.ResourceManager",
+        "GameFoundation.AssetLibrary",
+        "GameFoundation.Models",
+        "GameFoundation.BlueprintFlow",
+        "Condition"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

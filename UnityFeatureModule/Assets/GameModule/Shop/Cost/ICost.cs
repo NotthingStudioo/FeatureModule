@@ -1,7 +1,5 @@
-﻿namespace Game.Scripts.Shop.Cost
+﻿namespace GameModule.Shop.Cost
 {
-    using Game.Scripts.Blueprints;
-
     public interface ICost
     {
         string Id { get; }

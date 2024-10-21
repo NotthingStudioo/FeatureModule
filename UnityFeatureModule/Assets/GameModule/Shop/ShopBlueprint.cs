@@ -1,4 +1,4 @@
-﻿namespace Game.Scripts.Blueprints
+﻿namespace GameModule.Shop
 {
     using System.Collections.Generic;
     using System.Linq;

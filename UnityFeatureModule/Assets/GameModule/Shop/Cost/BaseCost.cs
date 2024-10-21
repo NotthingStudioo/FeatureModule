@@ -1,7 +1,6 @@
-﻿namespace Game.Scripts.Shop.Cost
+﻿namespace GameModule.Shop.Cost
 {
     using System;
-    using Game.Scripts.Blueprints;
 
     public abstract class BaseCost : ICost
     {

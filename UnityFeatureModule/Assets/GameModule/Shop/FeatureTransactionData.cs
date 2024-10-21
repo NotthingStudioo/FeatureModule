@@ -1,9 +1,8 @@
-﻿namespace Game.Scripts.Shop
+﻿namespace GameModule.Shop
 {
     using System;
     using System.Collections.Generic;
     using FeatureTemplate.Scripts.InterfacesAndEnumCommon;
-    using Game.Scripts.Blueprints;
     using GameFoundation.Scripts.Interfaces;
 
     public class FeatureTransactionData : ILocalData, IFeatureLocalData

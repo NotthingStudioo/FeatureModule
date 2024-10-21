@@ -1,7 +1,6 @@
-﻿namespace Game.Scripts.Shop.Cost
+﻿namespace GameModule.Shop.Cost
 {
     using FeatureTemplate.Scripts.Services;
-    using Game.Scripts.Blueprints;
 
     public class IAPCost : BaseCost
     {

@@ -1,7 +1,6 @@
-﻿namespace Game.Scripts.Shop.Cost
+﻿namespace GameModule.Shop.Cost
 {
     using FeatureTemplate.Scripts.Models.Controllers;
-    using Game.Scripts.Blueprints;
     using Zenject;
 
     public class CoinCost : BaseCost

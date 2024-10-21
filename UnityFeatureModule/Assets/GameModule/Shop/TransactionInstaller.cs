@@ -1,10 +1,10 @@
-﻿namespace Game.Scripts.Shop
+﻿namespace GameModule.Shop
 {
     using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.Services;
-    using Game.Scripts.Shop.Condition;
-    using Game.Scripts.Shop.Cost;
     using GameFoundation.Scripts.Utilities.Extension;
+    using GameModule.Condition;
+    using GameModule.Shop.Cost;
     using Zenject;
 
     public class TransactionInstaller : Installer<TransactionInstaller>
@@ -19,7 +19,7 @@
         private async void OnAfterDataLoaded()
         {
             await UniTask.WaitUntil(() => this.Container.Resolve<FeatureDataState>().IsBlueprintAndLocalDataLoaded);
-            this.Container.BindInterfacesAndSelfToAllTypeDriveFrom<IShopCondition>();
+            this.Container.BindInterfacesAndSelfToAllTypeDriveFrom<ICondition>();
         }
     }
 }

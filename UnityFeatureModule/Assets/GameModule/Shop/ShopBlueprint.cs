@@ -4,6 +4,7 @@
     using System.Linq;
     using BlueprintFlow.BlueprintReader;
     using FeatureTemplate.Scripts.RewardHandle;
+    using GameModule.Condition;
 
     [BlueprintReader("Shop")]
     public class ShopBlueprint : GenericBlueprintReaderByRow<string, ShopRecord>
@@ -24,7 +25,7 @@
         string Id { get; set; }
 
         public List<ICostRecord>   GetCosts();
-        public List<ShopCondition> GetConditions();
+        public List<IConditionRecord> GetConditions();
         public List<IRewardRecord> GetDeliverables();
     }
 
@@ -40,7 +41,7 @@
 
         public List<ICostRecord> GetCosts() { return this.Costs.Select(d => (ICostRecord)d).ToList(); }
 
-        public List<ShopCondition> GetConditions() { return this.Conditions; }
+        public List<IConditionRecord> GetConditions() { return this.Conditions.Cast<IConditionRecord>().ToList(); }
 
         public List<IRewardRecord> GetDeliverables()
         {
@@ -65,7 +66,7 @@
     }
 
     [CsvHeaderKey("ConditionId")]
-    public class ShopCondition
+    public class ShopCondition : IConditionRecord
     {
         public string ConditionId    { get; set; }
         public string ConditionType  { get; set; }

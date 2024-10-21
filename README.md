@@ -123,7 +123,7 @@ The <code>TimeLoop</code> parameter represents the length of the reward cycle. Y
 
 <figure>
     <img src="https://github.com/user-attachments/assets/e5e83693-7920-4426-98c9-751c53b9cd90" alt="Condition System" width="800" /><br>
-    <figcaption>Figure 1: Sequence diagram of the Condition System</figcaption>
+    <figcaption>Figure 2: Sequence diagram of the Condition System</figcaption>
 </figure>
 
 <p><strong>1. Install the <code>Condition</code> to the Project Installer</strong></p>
@@ -163,7 +163,7 @@ public class GameProjectInstaller : MonoInstaller
 <h3>System Architecture</h3>
 <figure>
     <img src="https://github.com/user-attachments/assets/fde6dfcf-5778-449e-9f8a-d9ac2bc868bc" alt="Shop System" width="400" height="600" /><br>
-    <figcaption>Figure 1: Sequence diagram of the Shop System</figcaption>
+    <figcaption>Figure 3: Flowchart of the Shop System</figcaption>
 </figure>
 
 

@@ -7,6 +7,7 @@ namespace Game.Scripts.Installer.Project
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using GameModule.DailyReward.MVP;
     using GameModule.DailyReward.Scripts;
+    using GameModule.QuestModule;
     using UnityEngine.EventSystems;
     using Zenject;
 
@@ -19,11 +20,11 @@ namespace Game.Scripts.Installer.Project
             SignalDeclarationInstaller.Install(this.Container);
             GameFoundationInstaller.Install(this.Container);
             FeaturesInstaller.Install(this.Container, this.featureToastController);
-            DailyRewardInstaller<DailyRewardDoubleRewardPresenter>.Install(this.Container);
             this.Container.Resolve<ScreenManager>().gameObject.SetActive(false);
             //EventSystem
             this.Container.Bind<EventSystem>().FromComponentInNewPrefabResource("EventSystem").AsCached().NonLazy();
             this.Container.BindInterfacesAndSelfTo<GameDataState>().AsCached().NonLazy();
+            QuestInstaller.Install(this.Container);
         }
     }
 }

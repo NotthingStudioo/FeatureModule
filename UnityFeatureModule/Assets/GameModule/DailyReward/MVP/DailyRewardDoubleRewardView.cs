@@ -8,6 +8,7 @@
     using GameFoundation.Scripts.UIModule.ScreenFlow.BaseScreen.Presenter;
     using GameFoundation.Scripts.UIModule.ScreenFlow.Managers;
     using GameModule.DailyReward.Scripts;
+    using GameModule.DailyReward.Signals;
     using UnityEngine;
     using Zenject;
 
@@ -56,7 +57,7 @@
             return UniTask.CompletedTask;
         }
 
-        protected override void OnClaimReward()
+        protected override void OnClaimReward(RewardClaimSignal signal)
         {
             this.Reload();
             this.UpdateUI();

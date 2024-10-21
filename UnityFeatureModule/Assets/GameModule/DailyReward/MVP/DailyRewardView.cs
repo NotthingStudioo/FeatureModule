@@ -10,6 +10,7 @@
     using GameModule.DailyReward.Blueprints;
     using GameModule.DailyReward.Scripts;
     using GameModule.DailyReward.Scripts.RewardSlotItem;
+    using GameModule.DailyReward.Signals;
     using UnityEngine;
     using Zenject;
     using Color = UnityEngine.Color;
@@ -46,7 +47,7 @@
             this.CheckButtonStatus();
         }
 
-        protected override void OnClaimReward() { }
+        protected override void OnClaimReward(RewardClaimSignal signal) { }
 
         protected override int Today => this.DailyRewardDataController.Today;
 

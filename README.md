@@ -180,12 +180,12 @@ public class GameProjectInstaller : MonoInstaller
 {
     public override void InstallBindings() 
     {
-        ShopInstaller.Install(this.Container);
+        TransactionInstaller.Install(this.Container);
     }
 }
 ```
 
-<p>The <code>ShopInstaller</code> will auto-install dependencies such as the <code>Condition</code> system if they are required by the shop module.</p> <p><strong>2. Configure Shop Data</strong></p> <p>Similar to the Mission system, the <code>Shop</code> system relies on external configuration files such as CSV or JSON for setting up shop items, costs, and rewards. Follow these steps to configure your shop data:</p>
+<p>The <code>TransactionInstaller</code> will auto-install dependencies such as the <code>Condition</code> system if they are required by the shop module.</p> <p><strong>2. Configure Shop Data</strong></p> <p>Similar to the Mission system, the <code>Shop</code> system relies on external configuration files such as CSV or JSON for setting up shop items, costs, and rewards. Follow these steps to configure your shop data:</p>
 <strong>Navigate</strong> to the folder <code>GameModule/Shop/Resources/ShopDataSample</code>.
 <strong>Move</strong> the sample configuration files into your project folder for customization.
 <strong>Modify the configuration files</strong> to align with your game's shop structure, prices, and rewards.

@@ -1,8 +1,8 @@
 {
-  "name": "@nothing/shop.module",
+  "name": "com.shop.module",
   "version": "1.0.0",
   "displayName": "GameModule.Shop",
   "dependencies": {
-    "@nothing/condition.module": "1.0.0"
+    "com.condition.module": "1.0.0"
   }
 }

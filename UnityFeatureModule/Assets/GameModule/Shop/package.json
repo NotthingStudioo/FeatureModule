@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "displayName": "GameModule.Shop",
   "dependencies": {
-    "com.condition.module": "v1.0.0"
+    "com.condition.module": "https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Condition#v1.0.0"
   }
 }

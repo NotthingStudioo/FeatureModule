@@ -2,5 +2,7 @@
   "name": "com.shop.module",
   "version": "1.0.0",
   "displayName": "GameModule.Shop",
-  "dependencies": {}
+  "dependencies": {
+    "com.condition.module": "https://github.com/NotthingStudioo/FeatureModule.git?path=UnityFeatureModule/Assets/GameModule/Condition"
+  }
 }

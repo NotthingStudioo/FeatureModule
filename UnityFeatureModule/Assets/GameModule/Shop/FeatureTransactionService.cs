@@ -9,14 +9,14 @@
     public class FeatureTransactionService
     {
         private readonly List<ICost>                      costs;
-        private readonly List<ICondition>             conditions;
-        private readonly List<IFeatureRewardExecutorBase> rewardExecutors;
+        private readonly List<ICondition>                 conditions;
+        private readonly FeatureRewardHandler             featureRewardHandler;
 
-        public FeatureTransactionService(List<ICost> costs, List<ICondition> conditions, List<IFeatureRewardExecutorBase> rewardExecutors)
+        public FeatureTransactionService(List<ICost> costs, List<ICondition> conditions, FeatureRewardHandler featureRewardHandler)
         {
-            this.costs           = costs;
-            this.conditions      = conditions;
-            this.rewardExecutors = rewardExecutors;
+            this.costs                = costs;
+            this.conditions           = conditions;
+            this.featureRewardHandler = featureRewardHandler;
         }
 
         /// <summary>
@@ -74,16 +74,8 @@
                 // If a matching cost is found, try purchase it
                 item.Purchase(matchingCost);
             }
-
-            foreach (var item in this.rewardExecutors)
-            {
-                var matchingDeliverable = transactionRecord.GetDeliverables().FirstOrDefault(deliverable => deliverable.RewardType == item.RewardType);
-
-                if(matchingDeliverable == null)
-                    continue;
-                
-                item.ReceiveReward(matchingDeliverable, null);
-            }
+            
+            this.featureRewardHandler.AddRewards(transactionRecord.GetDeliverables(), null);
 
             return true;
         }

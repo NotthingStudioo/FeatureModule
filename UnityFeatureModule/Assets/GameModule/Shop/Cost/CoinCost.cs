@@ -1,5 +1,6 @@
 ﻿namespace GameModule.Shop.Cost
 {
+    using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.Models.Controllers;
     using Zenject;
 
@@ -13,16 +14,16 @@
             return this.featureInventoryDataControllerData.GetCurrencyValue() >= int.Parse(record.CostValue);
         }
 
-        public override bool Purchase(ICostRecord record)
+        public override UniTask<bool> Purchase(ICostRecord record)
         {
             if (this.CanAfford(record))
             {
                 this.featureInventoryDataControllerData.AddCurrency(-int.Parse(record.CostValue));
                 this.PurchaseSuccess(record);
-                return true;
+                return UniTask.FromResult(true);
             }
             this.PurchaseFail(record);
-            return false;
+            return UniTask.FromResult(false);
         }
     }
 }

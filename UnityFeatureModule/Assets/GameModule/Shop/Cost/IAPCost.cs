@@ -1,5 +1,6 @@
 ﻿namespace GameModule.Shop.Cost
 {
+    using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.Services;
 
     public class IAPCost : BaseCost
@@ -11,14 +12,14 @@
 
         public override bool CanAfford(ICostRecord record) { return true; }
 
-        public override bool Purchase(ICostRecord record)
+        public override UniTask<bool> Purchase(ICostRecord record)
         {
             this.featureIapServices.BuyProduct(null, record.CostValue,
                 _ => this.PurchaseFail(record),
                 _ => this.PurchaseSuccess(record)
             );
 
-            return true;
+            return UniTask.FromResult(true);
         }
     }
 }

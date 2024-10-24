@@ -1,5 +1,6 @@
 ﻿namespace GameModule.Shop.Cost
 {
+    using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.Models.Controllers;
     using Zenject;
 
@@ -12,19 +13,19 @@
         public override bool CanAfford(ICostRecord record) { return this.featureTransactionDataController.CheckTransaction(record) >= int.Parse(record.CostValue); }
 
         // DO some think like try purchase, if false
-        public override bool Purchase(ICostRecord record)
+        public override UniTask<bool> Purchase(ICostRecord record)
         {
             if (this.CanAfford(record))
             {
                 this.PurchaseSuccess(record);
 
-                return true;
+                return UniTask.FromResult(true);
             }
             else
             {
                 this.PurchaseFail(record);
 
-                return false;
+                return UniTask.FromResult(false);
             }
         }
 

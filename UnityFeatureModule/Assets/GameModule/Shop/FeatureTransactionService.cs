@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Cysharp.Threading.Tasks;
     using FeatureTemplate.Scripts.RewardHandle;
     using GameModule.Condition;
     using GameModule.Shop.Cost;
@@ -50,7 +51,7 @@
         /// </summary>
         /// <param name="transactionRecord">The transaction record that includes cost and reward details.</param>
         /// <returns>True if the purchase is successful and rewards are distributed, otherwise false.</returns>
-        public bool DoPurchase(ITransactionRecord transactionRecord)
+        public async UniTask<bool> DoPurchase(ITransactionRecord transactionRecord)
         {
             // if any item can not afford, return false
             if ((from item in this.costs let matchingCost = transactionRecord.GetCosts().
@@ -62,6 +63,8 @@
                 return false;
             }
             
+            List<UniTask<bool>> purchaseTask = new();
+            
             // Check all if any cost cannot purchase
             foreach (var item in this.costs)
             {
@@ -72,8 +75,10 @@
                     continue;
 
                 // If a matching cost is found, try purchase it
-                item.Purchase(matchingCost);
+                purchaseTask.Add(item.Purchase(matchingCost));
             }
+            
+            await UniTask.WhenAll(purchaseTask);
             
             this.featureRewardHandler.AddRewards(transactionRecord.GetDeliverables(), null);
 

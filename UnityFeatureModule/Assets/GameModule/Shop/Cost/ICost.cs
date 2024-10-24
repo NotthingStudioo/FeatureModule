@@ -1,5 +1,7 @@
 ﻿namespace GameModule.Shop.Cost
 {
+    using Cysharp.Threading.Tasks;
+
     public interface ICost
     {
         string Id { get; }
@@ -10,8 +12,8 @@
         /// Call when player tap purchase button
         /// </summary>
         /// <param name="record"></param>
-        /// <returns></returns>
-        bool Purchase(ICostRecord record);
+        /// <returns>a Task return the result whether purchasable or not</returns>
+        UniTask<bool> Purchase(ICostRecord record);
 
         /// <summary>
         /// On Purchase Fail get Invoke when the transaction is not enough. If the transaction require ads,
